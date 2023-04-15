@@ -11,7 +11,8 @@ import Clients from "./components/Clients";
 import Contact from "./components/Contact";
 import Menu from "./components/Menu";
 import { store } from './redux/store';
-import { Provider } from 'react-redux'
+import { Provider } from 'react-redux';
+import { Counter } from './components/Counter';
 
 function App() {
   return (
@@ -30,7 +31,8 @@ function App() {
               <Route exact path="about" element={<About />} />
               <Route exact path="clients" element={<Clients />} />
               <Route exact path="contact" element={<Contact />} />
-
+              <Route exact path="counter" element={<Counter />} />
+              
             </Routes>
           </BrowserRouter>
         </Container>
