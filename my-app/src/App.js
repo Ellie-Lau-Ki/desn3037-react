@@ -10,9 +10,11 @@ import About from "./components/About";
 import Clients from "./components/Clients";
 import Contact from "./components/Contact";
 import Menu from "./components/Menu";
+import Counter from "./components/Counter";
+import List from "./components/List";
+
 import { store } from './redux/store';
 import { Provider } from 'react-redux';
-import { Counter } from './components/Counter';
 
 function App() {
   return (
@@ -32,7 +34,7 @@ function App() {
               <Route exact path="clients" element={<Clients />} />
               <Route exact path="contact" element={<Contact />} />
               <Route exact path="counter" element={<Counter />} />
-              
+              <Route exact path="list" element={<List />} />
             </Routes>
           </BrowserRouter>
         </Container>
