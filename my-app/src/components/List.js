@@ -15,55 +15,58 @@ import {
 } from '../redux/list'
 
 
+export function validateEmail(email) {
+    var re = /\S+@\S+\.\S+/;
+    return re.test(email);
+}
 
 export default function BasicList() {
 
     const field = useSelector((state) => state.list.field);
     const items = useSelector((state) => state.list.items);
-
     const dispatch = useDispatch();
-
     function add() {
 
-        dispatch(reducerAdd(field))
+        if (validateEmail(field) === true) {
+
+            dispatch(reducerAdd(field))
+            dispatch(reducerDefine(""))
+
+        } else {
+
+            alert("Alert! Enter the correct email address.");
+
+        }
+
 
     }
 
     function remove(index) {
-
         dispatch(reducerRemove(index))
-
     }
 
     function define(value) {
-
         dispatch(reducerDefine(value))
-
     }
 
     return (
         <Box sx={{ width: '100%', maxWidth: "100%", bgcolor: 'background.paper' }}>
 
-            <TextField label="Name" variant="outlined" value={field} sx={{ width: "100%", marginBottom: 1 }} onChange={(e) => define(e.target.value)} />
+            <TextField label="Email" variant="outlined" value={field} sx={{ width: "100%", marginBottom: 1 }} onChange={(e) => define(e.target.value)} />
             <Button variant="contained" sx={{ width: "100%", marginBottom: 1 }} onClick={(e) => { add() }}>
                 Add
             </Button>
-
             <Divider />
 
             <nav aria-label="secondary mailbox folders">
                 <List>
-
                     {items.map((item, i) =>
-
                         <ListItem disablePadding key={i}>
                             <ListItemButton onClick={(e) => remove(i)}>
                                 <ListItemText primary={item} />
                             </ListItemButton>
                         </ListItem>
-
                     )}
-
 
                 </List>
             </nav>
