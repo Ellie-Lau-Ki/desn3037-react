@@ -15,10 +15,6 @@ import {
 } from '../redux/list'
 
 
-export function validateEmail(email) {
-    var re = /\S+@\S+\.\S+/;
-    return re.test(email);
-}
 
 export default function BasicList() {
 
@@ -29,17 +25,7 @@ export default function BasicList() {
 
     function add() {
 
-        if (validateEmail(field) === true) {
-
-            dispatch(reducerAdd(field))
-            dispatch(reducerDefine(""))
-
-        } else {
-
-            alert("Alert! Enter the correct email address.");
-
-        }
-
+        dispatch(reducerAdd(field))
 
     }
 
@@ -58,7 +44,7 @@ export default function BasicList() {
     return (
         <Box sx={{ width: '100%', maxWidth: "100%", bgcolor: 'background.paper' }}>
 
-            <TextField label="Email" variant="outlined" value={field} sx={{ width: "100%", marginBottom: 1 }} onChange={(e) => define(e.target.value)} />
+            <TextField label="Name" variant="outlined" value={field} sx={{ width: "100%", marginBottom: 1 }} onChange={(e) => define(e.target.value)} />
             <Button variant="contained" sx={{ width: "100%", marginBottom: 1 }} onClick={(e) => { add() }}>
                 Add
             </Button>
